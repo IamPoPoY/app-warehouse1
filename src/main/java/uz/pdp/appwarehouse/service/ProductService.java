@@ -34,15 +34,15 @@ public class ProductService {
             return new Result("Such product already exist in this category",false);
         }
         Optional<Category> optionalCategory = categoryRepository.findById(productDto.getCategoryId());
-        if (optionalCategory.isEmpty()){
+        if (optionalCategory.isPresent()){
             return new Result("Such category doesn't exist",false);
         }
         Optional<Measurement> optionalMeasurement = measurementRepository.findById(productDto.getMeasurementId());
-        if (optionalMeasurement.isEmpty()){
+        if (optionalMeasurement.isPresent()){
             return new Result("Such measurement doesn't exist",false);
         }
         Optional<Attachment> optionalAttachment = attachmentRepository.findById(productDto.getAttachmentId());
-        if (optionalAttachment.isEmpty()){
+        if (optionalAttachment.isPresent()){
             return new Result("Such attachment doesn't exist",false);
         }
         Product product=new Product();
@@ -82,22 +82,22 @@ public class ProductService {
 
     public Result editProduct(Integer id,ProductDto productDto){
         Optional<Product> optionalProduct = productRepository.findById(id);
-        if (optionalProduct.isEmpty()){
+        if (optionalProduct.isPresent()){
             return new Result("Such product doesn't exist",false);
         }
         if (productRepository.existsByNameAndCategoryId(productDto.getName(),productDto.getCategoryId())){
             return new Result("Such product already exist in this category",false);
         }
         Optional<Category> optionalCategory = categoryRepository.findById(productDto.getCategoryId());
-        if (optionalCategory.isEmpty()){
+        if (optionalCategory.isPresent()){
             return new Result("Such category doesn't exist",false);
         }
         Optional<Measurement> optionalMeasurement = measurementRepository.findById(productDto.getMeasurementId());
-        if (optionalMeasurement.isEmpty()){
+        if (optionalMeasurement.isPresent()){
             return new Result("Such measurement doesn't exist",false);
         }
         Optional<Attachment> optionalAttachment = attachmentRepository.findById(productDto.getAttachmentId());
-        if (optionalAttachment.isEmpty()){
+        if (optionalAttachment.isPresent()){
             return new Result("Such attachment doesn't exist",false);
         }
         Product product = optionalProduct.get();

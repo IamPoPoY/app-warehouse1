@@ -1,6 +1,5 @@
 package uz.pdp.appwarehouse.entity;
 
-import jdk.jfr.Enabled;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

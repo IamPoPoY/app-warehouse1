@@ -42,7 +42,7 @@ public class UserService {
         Set<Warehouse> warehouseSet=new HashSet<>();
         for (Integer warehouse : userDto.getWarehousesId()) {
             Optional<Warehouse> optionalWarehouse = warehouseRepository.findById(warehouse);
-            if (optionalWarehouse.isEmpty()){
+            if (optionalWarehouse.isPresent()){
                 return new Result("Such warehouse doesn't exist!!! ",false);
             }
             warehouseSet.add(optionalWarehouse.get());
@@ -71,7 +71,7 @@ public class UserService {
 
     public Result editUser(Integer id,UserDto userDto){
         Optional<User> optionalUser = userRepository.findById(id);
-        if (optionalUser.isEmpty()){
+        if (optionalUser.isPresent()){
             return new Result("Such user doesn't exist",false);
         }
         User user = optionalUser.get();
@@ -85,7 +85,7 @@ public class UserService {
         Set<Warehouse> warehouseSet=new HashSet<>();
         for (Integer warehouse : userDto.getWarehousesId()) {
             Optional<Warehouse> optionalWarehouse = warehouseRepository.findById(warehouse);
-            if (optionalWarehouse.isEmpty()){
+            if (optionalWarehouse.isPresent()){
                 return new Result("Such warehouse doesn't exist!!! ",false);
             }
             warehouseSet.add(optionalWarehouse.get());

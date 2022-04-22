@@ -26,15 +26,15 @@ public class InputService {
 
     public Result addInput(InputDto inputDto){
         Optional<Warehouse> optionalWarehouse = warehouseRepository.findById(inputDto.getWarehouseId());
-        if (optionalWarehouse.isEmpty()){
+        if (optionalWarehouse.isPresent()){
             return new Result("Such warehouse doesn't exist",false);
         }
         Optional<Supplier> optionalSupplier = supplierRepository.findById(inputDto.getSupplierId());
-        if (optionalSupplier.isEmpty()){
+        if (optionalSupplier.isPresent()){
             return new Result("Such supplier doesn't exist",false);
         }
         Optional<Currency> optionalCurrency = currencyRepository.findById(inputDto.getCurrencyId());
-        if (optionalCurrency.isEmpty()){
+        if (optionalCurrency.isPresent()){
             return new Result("Such currency doesn't exist",false);
         }
         Input input=new Input();
@@ -66,19 +66,19 @@ public class InputService {
 
     public Result editInput(Integer id,InputDto inputDto){
         Optional<Input> optionalInput = inputRepository.findById(id);
-        if (optionalInput.isEmpty()){
+        if (optionalInput.isPresent()){
             return new Result("Such input doesn't exist",false);
         }
         Optional<Warehouse> optionalWarehouse = warehouseRepository.findById(inputDto.getWarehouseId());
-        if (optionalWarehouse.isEmpty()){
+        if (optionalWarehouse.isPresent()){
             return new Result("Such warehouse doesn't exist",false);
         }
         Optional<Supplier> optionalSupplier = supplierRepository.findById(inputDto.getSupplierId());
-        if (optionalSupplier.isEmpty()){
+        if (optionalSupplier.isPresent()){
             return new Result("Such supplier doesn't exist",false);
         }
         Optional<Currency> optionalCurrency = currencyRepository.findById(inputDto.getCurrencyId());
-        if (optionalCurrency.isEmpty()){
+        if (optionalCurrency.isPresent()){
             return new Result("Such currency doesn't exist",false);
         }
         Input input = optionalInput.get();

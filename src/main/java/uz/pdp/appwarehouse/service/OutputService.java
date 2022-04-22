@@ -27,15 +27,15 @@ public class OutputService {
 
     public Result addOutput(OutputDto outputDto){
         Optional<Warehouse> optionalWarehouse = warehouseRepository.findById(outputDto.getWarehouseId());
-        if (optionalWarehouse.isEmpty()){
+        if (optionalWarehouse.isPresent()){
             return new Result("Such warehouse doesn't exist",false);
         }
         Optional<Client> optionalClient = clientRepository.findById(outputDto.getClientId());
-        if (optionalClient.isEmpty()){
+        if (optionalClient.isPresent()){
             return new Result("Such client doesn't exist",false);
         }
         Optional<Currency> optionalCurrency = currencyRepository.findById(outputDto.getCurrencyId());
-        if (optionalCurrency.isEmpty()){
+        if (optionalCurrency.isPresent()){
             return new Result("Such currency doesn't exist",false);
         }
         Output output=new Output();
@@ -66,19 +66,19 @@ public class OutputService {
 
     public Result editOutput(Integer id,OutputDto outputDto){
         Optional<Output> optionalOutput = outputRepository.findById(id);
-        if (optionalOutput.isEmpty()){
+        if (optionalOutput.isPresent()){
             return new Result("Such output doesn't exist",false);
         }
         Optional<Warehouse> optionalWarehouse = warehouseRepository.findById(outputDto.getWarehouseId());
-        if (optionalWarehouse.isEmpty()){
+        if (optionalWarehouse.isPresent()){
             return new Result("Such warehouse doesn't exist",false);
         }
         Optional<Client> optionalClient = clientRepository.findById(outputDto.getClientId());
-        if (optionalClient.isEmpty()){
+        if (optionalClient.isPresent()){
             return new Result("Such client doesn't exist",false);
         }
         Optional<Currency> optionalCurrency = currencyRepository.findById(outputDto.getCurrencyId());
-        if (optionalCurrency.isEmpty()){
+        if (optionalCurrency.isPresent()){
             return new Result("Such currency doesn't exist",false);
         }
         Output output = optionalOutput.get();

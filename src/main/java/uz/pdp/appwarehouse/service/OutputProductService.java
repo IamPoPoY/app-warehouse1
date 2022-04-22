@@ -24,11 +24,11 @@ public class OutputProductService {
 
     public Result addOutputProduct(OutputProductDto outputProductDto){
         Optional<Output> optionalOutput = outputRepository.findById(outputProductDto.getOutputId());
-        if (optionalOutput.isEmpty()){
+        if (optionalOutput.isPresent()){
             return new Result("Such output doesn't exist",false);
         }
         Optional<Product> optionalProduct = productRepository.findById(outputProductDto.getProductId());
-        if (optionalProduct.isEmpty()){
+        if (optionalProduct.isPresent()){
             return new Result("Such product doesn't exist",false);
         }
         OutputProduct outputProduct=new OutputProduct();
@@ -62,15 +62,15 @@ public class OutputProductService {
 
     public Result editOutputProduct(Integer id,OutputProductDto outputProductDto){
         Optional<OutputProduct> optionalOutputProduct = outputProductRepository.findById(id);
-        if (optionalOutputProduct.isEmpty()){
+        if (optionalOutputProduct.isPresent()){
             return new Result("Such Output-Product doesn't exist",false);
         }
         Optional<Output> optionalOutput = outputRepository.findById(outputProductDto.getOutputId());
-        if (optionalOutput.isEmpty()){
+        if (optionalOutput.isPresent()){
             return new Result("Such output doesn't exist",false);
         }
         Optional<Product> optionalProduct = productRepository.findById(outputProductDto.getProductId());
-        if (optionalProduct.isEmpty()){
+        if (optionalProduct.isPresent()){
             return new Result("Such product doesn't exist",false);
         }
         OutputProduct outputProduct = optionalOutputProduct.get();
